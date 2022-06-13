@@ -48,5 +48,20 @@ function displayResults(weather){
     weather_el.innerText = weather.weather[0].main;
 
     let hilow = document.querySelector('.hi-low');
-    hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`
+    hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
+
+    let now = new Date();
+    let date = document.querySelector('.date');
+    date.innerText = dateBuilder(now);
+}
+
+function dateBuilder(dateObj){
+    const DATE_FORMAT_OPTIONS = {
+        month:'long',
+        day:'numeric',
+        year:'numeric',
+        weekday:'long'
+    };
+
+    return dateObj.toLocaleDateString("en-US",DATE_FORMAT_OPTIONS)
 }
